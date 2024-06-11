@@ -30,8 +30,8 @@ The following Entity Relationship Diagram (ERD) illustrates the database structu
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/e-commerce-api.git
-    cd e-commerce-api
+    git clone https://github.com/pramudya3/go-commerce
+    cd go-commerce
     ```
 
 2. Install dependencies:
@@ -39,13 +39,13 @@ The following Entity Relationship Diagram (ERD) illustrates the database structu
     go mod tidy
     ```
 
-3. Set up your database and update the configuration file with your database credentials.
-
-4. Run database migrations (assuming GORM AutoMigrate is configured).
-
-5. Start the server:
+3. Start the server:
     ```sh
-    go run main.go
+    go run ./app/main.go
+    ```
+4. Or you can start with docker-compose:
+    ```sh
+    docker compose build && docker compose run
     ```
 
 ## API Endpoints
