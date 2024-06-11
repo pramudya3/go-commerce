@@ -1,3 +1,4 @@
+```markdown
 # E-Commerce API
 
 This repository contains an e-commerce API built with Go using the Gin framework. The API supports user authentication, product management, cart management, order processing, and payments.
@@ -26,6 +27,15 @@ The following Entity Relationship Diagram (ERD) illustrates the database structu
 
 ![ERD](./erd_e-commerce.png)
 
+- **Users**: Stores user information, including authentication details.
+- **Categories**: Represents product categories.
+- **Products**: Stores details about products, linked to categories.
+- **Carts**: Represents a user's shopping cart, including the status and shipping address.
+- **Cart Details**: Stores individual items within a cart.
+- **Payments**: Tracks payment details and links to a cart.
+
+This structure supports the necessary relationships between users, products, categories, carts, and payments, ensuring data integrity and enabling efficient e-commerce operations.
+
 ## Installation
 
 1. Clone the repository:
@@ -43,9 +53,10 @@ The following Entity Relationship Diagram (ERD) illustrates the database structu
     ```sh
     go run ./app/main.go
     ```
-4. Or you can start with docker-compose:
+
+4. Or you can start with Docker Compose:
     ```sh
-    docker compose build && docker compose run
+    docker compose build && docker compose up
     ```
 
 ## API Endpoints
@@ -259,8 +270,4 @@ Follow these steps to test the application:
    - Use the `POST /api/v1/payment/` endpoint to create a payment for the order.
 
 By following these steps, you can test the complete flow of the e-commerce application, from user registration and product management to cart handling, checkout, and payment processing.
-- **Carts**: Represents a user's shopping cart, including the status and shipping address.
-- **Cart Details**: Stores individual items within a cart.
-- **Payments**: Tracks payment details and links to a cart.
-
-This structure supports the necessary relationships between users, products, categories, carts, and payments, ensuring data integrity and enabling efficient e-commerce operations.
+```
