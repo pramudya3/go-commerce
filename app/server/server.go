@@ -11,19 +11,17 @@ import (
 
 	"go-commerce/pkg/config"
 	database "go-commerce/pkg/database/gorm"
-	rds "go-commerce/pkg/database/redis"
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 )
 
 type Server struct {
-	gin   *gin.Engine
-	cfg   *config.Config
-	db    *gorm.DB
-	redis *redis.Client
+	gin *gin.Engine
+	cfg *config.Config
+	db  *gorm.DB
+	// redis *redis.Client
 }
 
 func NewServer() *Server {
@@ -35,16 +33,16 @@ func NewServer() *Server {
 
 	db.AutoMigrate(&domain.User{}, &domain.Category{}, &domain.Product{}, &domain.Cart{}, &domain.CartDetail{}, &domain.Payment{})
 
-	rdb, err := rds.NewRedis(cfg)
-	if err != nil {
-		log.Fatalln("failed to init redis")
-	}
+	// rdb, err := rds.NewRedis(cfg)
+	// if err != nil {
+	// 	log.Fatalln("failed to init redis")
+	// }
 
 	return &Server{
-		gin:   gin.Default(),
-		cfg:   cfg,
-		db:    db,
-		redis: rdb,
+		gin: gin.Default(),
+		cfg: cfg,
+		db:  db,
+		// redis: rdb,
 	}
 }
 

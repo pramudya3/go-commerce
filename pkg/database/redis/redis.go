@@ -1,28 +1,19 @@
 package redis
 
-import (
-	"context"
-	"go-commerce/pkg/config"
-	"log"
-	"time"
+// func NewRedis(config *config.Config) (*rds.Client, error) {
+// 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(config.TimeoutCtx)*time.Second)
+// 	defer cancel()
 
-	rds "github.com/redis/go-redis/v9"
-)
+// 	rdb := rds.NewClient(&rds.Options{
+// 		Addr:     config.RedisHost,
+// 		Password: config.RedisPass,
+// 	})
 
-func NewRedis(config *config.Config) (*rds.Client, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(config.TimeoutCtx)*time.Second)
-	defer cancel()
+// 	_, err := rdb.Ping(ctx).Result()
+// 	if err != nil {
+// 		log.Fatalf("ping database redis failed, err: %v", err)
+// 		return nil, err
+// 	}
 
-	rdb := rds.NewClient(&rds.Options{
-		Addr:     config.RedisHost,
-		Password: config.RedisPass,
-	})
-
-	_, err := rdb.Ping(ctx).Result()
-	if err != nil {
-		log.Fatalf("ping database redis failed, err: %v", err)
-		return nil, err
-	}
-
-	return rdb, nil
-}
+// 	return rdb, nil
+// }
