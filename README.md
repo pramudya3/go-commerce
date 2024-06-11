@@ -1,5 +1,3 @@
-Sure, I'll add the provided image to the README and provide a short description of the image. Here's the updated README content with the image and its description:
-
 # E-Commerce API
 
 This repository contains an e-commerce API built with Go using the Gin framework. The API supports user authentication, product management, cart management, order processing, and payments.
@@ -7,11 +5,11 @@ This repository contains an e-commerce API built with Go using the Gin framework
 ## Table of Contents
 
 - [Features](#features)
+- [Database Structure](#database-structure)
 - [Installation](#installation)
 - [API Endpoints](#api-endpoints)
 - [Request Examples](#request-examples)
 - [Testing the Application](#testing-the-application)
-- [Database Structure](#database-structure)
 
 ## Features
 
@@ -21,6 +19,12 @@ This repository contains an e-commerce API built with Go using the Gin framework
 - Cart Management (Add, View, Delete Items)
 - Order Management (Create, Retrieve)
 - Payment Processing (Create, Retrieve)
+
+## Database Structure
+
+The following Entity Relationship Diagram (ERD) illustrates the database structure for the e-commerce application:
+
+![ERD](./erd_e-commerce.png)
 
 ## Installation
 
@@ -258,18 +262,6 @@ Follow these steps to test the application:
    - Use the `POST /api/v1/payment/` endpoint to create a payment for the order.
 
 By following these steps, you can test the complete flow of the e-commerce application, from user registration and product management to cart handling, checkout, and payment processing.
-
-## Database Structure
-
-The following Entity Relationship Diagram (ERD) illustrates the database structure for the e-commerce application:
-
-![ERD](./erd_e-commerce.png)
-
-### Description
-
-- **Users**: Contains user information.
-- **Categories**: Defines product categories.
-- **Products**: Holds product details, each linked to a category.
 - **Carts**: Represents a user's shopping cart, including the status and shipping address.
 - **Cart Details**: Stores individual items within a cart.
 - **Payments**: Tracks payment details and links to a cart.
