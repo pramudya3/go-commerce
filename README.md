@@ -72,9 +72,6 @@ The following Entity Relationship Diagram (ERD) illustrates the database structu
     }
     ```
 
-- **Get User Token**
-  - **Endpoint**: `GET /api/v1/user/token`
-
 ### Product Management
 
 - **Create Product**
