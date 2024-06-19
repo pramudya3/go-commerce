@@ -1,16 +1,21 @@
-```markdown
 # E-Commerce API
 
 This repository contains an e-commerce API built with Go using the Gin framework. The API supports user authentication, product management, cart management, order processing, and payments.
 
 ## Table of Contents
 
-- [Features](#features)
 - [Database Structure](#database-structure)
+- [Features](#features)
 - [Installation](#installation)
 - [API Endpoints](#api-endpoints)
 - [Request Examples](#request-examples)
 - [Testing the Application](#testing-the-application)
+
+## Database Structure
+
+The following Entity Relationship Diagram (ERD) illustrates the database structure for the e-commerce application:
+
+![ERD](./erd_e-commerce.png)
 
 ## Features
 
@@ -21,27 +26,13 @@ This repository contains an e-commerce API built with Go using the Gin framework
 - Order Management (Create, Retrieve)
 - Payment Processing (Create, Retrieve)
 
-## Database Structure
-
-The following Entity Relationship Diagram (ERD) illustrates the database structure for the e-commerce application:
-
-![ERD](./erd_e-commerce.png)
-
-- **Users**: Stores user information, including authentication details.
-- **Categories**: Represents product categories.
-- **Products**: Stores details about products, linked to categories.
-- **Carts**: Represents a user's shopping cart, including the status and shipping address.
-- **Cart Details**: Stores individual items within a cart.
-- **Payments**: Tracks payment details and links to a cart.
-
-This structure supports the necessary relationships between users, products, categories, carts, and payments, ensuring data integrity and enabling efficient e-commerce operations.
 
 ## Installation
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/pramudya3/go-commerce
-    cd go-commerce
+    git clone https://github.com/yourusername/e-commerce-api.git
+    cd e-commerce-api
     ```
 
 2. Install dependencies:
@@ -49,14 +40,13 @@ This structure supports the necessary relationships between users, products, cat
     go mod tidy
     ```
 
-3. Start the server:
-    ```sh
-    go run ./app/main.go
-    ```
+3. Set up your database and update the configuration file with your database credentials.
 
-4. Or you can start with Docker Compose:
+4. Run database migrations (assuming GORM AutoMigrate is configured).
+
+5. Start the server:
     ```sh
-    docker compose build && docker compose up
+    go run main.go
     ```
 
 ## API Endpoints
@@ -83,10 +73,14 @@ This structure supports the necessary relationships between users, products, cat
     }
     ```
 
+- **Get User Token**
+  - **Endpoint**: `GET /api/v1/user/token`
+
 ### Product Management
 
 - **Create Product**
   - **Endpoint**: `POST /api/v1/product/`
+  - **Auth**: `Bearer Token`
   - **Body**:
     ```json
     {
@@ -108,6 +102,7 @@ This structure supports the necessary relationships between users, products, cat
 
 - **Create Category**
   - **Endpoint**: `POST /api/v1/category/`
+  - **Auth**: `Bearer Token`
   - **Body**:
     ```json
     {
@@ -122,9 +117,11 @@ This structure supports the necessary relationships between users, products, cat
 
 - **Get Cart Info**
   - **Endpoint**: `GET /api/v1/cart/`
+  - **Auth**: `Bearer Token`
 
 - **Add to Cart**
   - **Endpoint**: `POST /api/v1/cart/`
+  - **Auth**: `Bearer Token`
   - **Body**:
     ```json
     {
@@ -135,14 +132,17 @@ This structure supports the necessary relationships between users, products, cat
 
 - **Delete Cart Detail**
   - **Endpoint**: `DELETE /api/v1/cart/detail/:id`
+  - **Auth**: `Bearer Token`
 
 - **Fetch User Carts**
   - **Endpoint**: `GET /api/v1/cart/all`
+  - **Auth**: `Bearer Token`
 
 ### Order Management
 
 - **Create Checkout**
   - **Endpoint**: `POST /api/v1/checkout`
+  - **Auth**: `Bearer Token`
   - **Body**:
     ```json
     {
@@ -158,6 +158,7 @@ This structure supports the necessary relationships between users, products, cat
 
 - **Create Payment**
   - **Endpoint**: `POST /api/v1/payment/`
+  - **Auth**: `Bearer Token`
   - **Body**:
     ```json
     {
@@ -167,6 +168,7 @@ This structure supports the necessary relationships between users, products, cat
 
 - **Get Payment Info**
   - **Endpoint**: `GET /api/v1/payment/`
+  - **Auth**: `Bearer Token`
 
 ## Request Examples
 
@@ -270,4 +272,14 @@ Follow these steps to test the application:
    - Use the `POST /api/v1/payment/` endpoint to create a payment for the order.
 
 By following these steps, you can test the complete flow of the e-commerce application, from user registration and product management to cart handling, checkout, and payment processing.
-```
+
+### Description
+
+- **Users**: Contains user information.
+- **Categories**: Defines product categories.
+- **Products**: Holds product details, each linked to a category.
+- **Carts**: Represents a user's shopping cart, including the status and shipping address.
+- **Cart Details**: Stores individual items within a cart.
+- **Payments**: Tracks payment details and links to a cart.
+
+This structure supports the necessary relationships between users, products, categories, carts, and payments, ensuring data integrity and enabling efficient e-commerce operations.
